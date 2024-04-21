@@ -40,7 +40,10 @@
 
         <section id="featured-products">
             <h2>Productos destacados</h2>
-            <!-- Aquí puedes mostrar algunos productos destacados -->
+            <% productos.forEach((producto, index)=> { %>
+                <h2 class="title-text"><%= producto.nombre %></h2>
+                <p><%= producto.correo %></p>
+            <% }); %>
         </section>
 
         <section id="about">
