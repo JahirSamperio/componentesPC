@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PCBlend - Inicio</title>
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="home.html"><img src="/images/logo.jpg" alt="PCBlend Logo" /></a>
+            </div>
+            <ul>
+                <li><a href="home.html" class="active">Inicio</a></li>
+                <li><a href="products.html">Productos</a></li>
+                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="favorites.html">Favoritos</a></li>
+                <li>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                </li>
+            </ul>
+            <div class="user-menu">
+                <a href="login.html">Iniciar sesión</a>
+                <a href="register.html">Registrarse</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Bienvenido a PCBlend</h1>
+                <p>Descubre el poder de la personalización y crea la PC de tus sueños.</p>
+                <a href="products.html" class="btn">Ver productos</a>
+            </div>
+            <div class="hero-image">
+                <img src="/images/products/hero.webp" alt="Hero Image" />
+            </div>
+        </section>
+        <section id="featured-products">
+            <h2>Productos destacados</h2>
+            <div class="product-grid"></div>
+        </section>
+        <section id="about">
+            <div class="about-content">
+                <h2>Sobre nosotros</h2>
+                <p>PCBlend es tu destino para crear la PC de tus sueños. Ofrecemos componentes de alta calidad y la libertad de personalizar tu máquina según tus necesidades.</p>
+                <a href="about.html" class="btn">Leer más</a>
+            </div>
+            <div class="about-image">
+                <img src="../images/about-image.jpg" alt="About Image" />
+            </div>
+        </section>
+        <section id="testimonials">
+            <h2>Lo que dicen nuestros clientes</h2>
+            <div class="testimonial-slider">
+                <div class="testimonial">
+                    <p>"PCBlend me permitió crear la PC de mis sueños. La personalización fue fácil y el resultado final superó mis expectativas."</p>
+                    <p class="testimonial-author">- John Doe</p>
+                </div>
+                <div class="testimonial">
+                    <p>"La atención al cliente de PCBlend es excepcional. Respondieron todas mis preguntas y me guiaron en el proceso de selección de componentes."</p>
+                    <p class="testimonial-author">- Jane Smith</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Estoy impresionado con la calidad de los ensamblados de PCBlend. Mi PC ha funcionado a la perfección desde el primer día."</p>
+                    <p class="testimonial-author">- Mark Johnson</p>
+                </div>
+            </div>
+        </section>
+        <section id="newsletter">
+            <h2>Suscríbete a nuestro boletín</h2>
+            <form>
+                <input type="email" name="email" placeholder="Ingresa tu correo electrónico" required />
+                <button type="submit" class="btn">Suscribirse</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="/images/logo.jpg" alt="PCBlend Logo" />
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="customization.html">Personalización</a></li>
+                    <li><a href="about.html">Sobre nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <ul>
+                    <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                    <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                    <li><a href="#"><i the="fab fa-instagram"></i></a></li>
+                    <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 PCBlend. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        // Aquí se incorpora el script para manejar el arreglo y mostrar los productos
+        const productos = [
+            { id: 1, nombre: 'Producto 1', descripcion: 'Descripción del producto 1.', precio: '99.99', imagen: '/images/products/product5.webp' },
+            { id: 2, nombre: 'Producto 2', descripcion: 'Descripción del producto 2.', precio: '149.99', imagen: '/images/products/product6.webp' },
+            { id: 3, nombre: 'Producto 3', descripcion: 'Descripción del producto 3.', precio: '199.99', imagen: '/images/products/product7.webp' }
+        ];
+
+        function mostrarProductos() {
+            const contenedorProductos = document.querySelector('.product-grid');
+            if (contenedorProductos) {
+                contenedorProductos.innerHTML = '';
+                productos.forEach((producto) => {
+                    const htmlProducto = `
+                        <div class="product">
+                            <img src="${producto.imagen}" alt="${producto.nombre}" />
+                            <h3>${producto.nombre}</h3>
+                            <p>${producto.descripcion}</p>
+                            <a href="product-details.html?id=${producto.id}" class="btn">Ver detalles</a>
+                        </div>
+                    `;
+                    contenedorProductos.innerHTML += htmlProducto;
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', mostrarProductos);
+    </script>
+</body>
+</html>

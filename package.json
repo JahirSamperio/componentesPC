@@ -1,0 +1,19 @@
+{
+  "name": "componentes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "server": "nodemon app.js"
+  },
+  "author": "Sergio Jaaziel Rojo Cisneros, Jahir Alberto Samperio",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "nodemon": "^3.1.0"
+  }
+}

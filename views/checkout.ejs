@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCBlend - Pago</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="home.html"><img src="/images/logo.jpg" alt="PCBlend Logo" /></a>
+            </div>
+            <ul>
+                <li><a href="home.html" class="active">Inicio</a></li>
+                <li><a href="products.html">Productos</a></li>
+                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="favorites.html">Favoritos</a></li>
+                <li>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                </li>
+            </ul>
+            <div class="user-menu">
+                <a href="login.html">Iniciar sesión</a>
+                <a href="register.html">Registrarse</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Pago</h1>
+
+        <div class="checkout-container">
+            <form id="checkout-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre completo:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="direccion">Dirección de envío:</label>
+                    <input type="text" id="direccion" name="direccion" required>
+                </div>
+                <div class="form-group">
+                    <label for="ciudad">Ciudad:</label>
+                    <input type="text" id="ciudad" name="ciudad" required>
+                </div>
+                <div class="form-group">
+                    <label for="pais">País:</label>
+                    <input type="text" id="pais" name="pais" required>
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" required>
+                </div>
+                <div class="form-group">
+                    <label for="metodo-pago">Método de pago:</label>
+                    <select id="metodo-pago" name="metodo-pago" required>
+                        <option value="">Selecciona un método de pago</option>
+                        <option value="tarjeta-credito">Tarjeta de crédito</option>
+                        <option value="paypal">PayPal</option>
+                    </select>
+                </div>
+                <div id="tarjeta-credito-fields" style="display: none;">
+                    <div class="form-group">
+                        <label for="numero-tarjeta">Número de tarjeta:</label>
+                        <input type="text" id="numero-tarjeta" name="numero-tarjeta">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-expiracion">Fecha de expiración:</label>
+                        <input type="text" id="fecha-expiracion" name="fecha-expiracion">
+                    </div>
+                    <div class="form-group">
+                        <label for="cvv">CVV:</label>
+                        <input type="text" id="cvv" name="cvv">
+                    </div>
+                </div>
+                <button type="submit" class="btn">Realizar pago</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="/images/logo.jpg" alt="PCBlend Logo" />
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="customization.html">Personalización</a></li>
+                    <li><a href="about.html">Sobre nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 PCBlend. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/checkout.js"></script>
+</body>
+</html>

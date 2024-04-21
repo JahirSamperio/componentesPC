@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCBlend - Carrito de compras</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="home.html"><img src="/images/logo.jpg" alt="PCBlend Logo" /></a>
+            </div>
+            <ul>
+                <li><a href="home.html">Inicio</a></li>
+                <li><a href="products.html">Productos</a></li>
+                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="favorites.html">Favoritos</a></li>
+                <li>
+                    <a href="cart.html" class="active"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                </li>
+            </ul>
+            <div class="user-menu">
+                <a href="login.html">Iniciar sesión</a>
+                <a href="register.html">Registrarse</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Carrito de compras</h1>
+
+        <div class="cart-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Los productos del carrito se generarán dinámicamente aquí -->
+                </tbody>
+            </table>
+
+            <div class="cart-summary">
+                <p>Total: <span id="cart-total"></span></p>
+                <button id="btn-checkout" class="btn">Proceder al pago</button>
+            </div>
+        </div>
+
+        <div class="empty-cart" style="display: none;">
+            <p>Tu carrito está vacío.</p>
+            <a href="products.html" class="btn">Explorar productos</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="/images/logo.jpg" alt="PCBlend Logo" />
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="customization.html">Personalización</a></li>
+                    <li><a href="about.html">Sobre nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 PCBlend. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/cart.js"></script>
+</body>
+</html>

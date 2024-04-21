@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCBlend - Chatbot</title>
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/chatbot.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="home.html"><img src="/images/logo.jpg" alt="PCBlend Logo" /></a>
+            </div>
+            <ul>
+                <li><a href="home.html" class="active">Inicio</a></li>
+                <li><a href="products.html">Productos</a></li>
+                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="favorites.html">Favoritos</a></li>
+                <li>
+                    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
+                </li>
+            </ul>
+            <div class="user-menu">
+                <a href="login.html">Iniciar sesión</a>
+                <a href="register.html">Registrarse</a>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Chatbot de asistencia</h1>
+
+        <div class="chatbot-container">
+            <div class="chat-display" id="chat-display"></div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
+                <button onclick="enviarPregunta()">Enviar</button>
+                <button id="limpiar-btn" onclick="limpiarConversacion()">Clean<button>
+                        <!-- Botón para limpiar la conversación -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-top">
+            <div class="footer-logo">
+                <img src="/images/logo.jpg" alt="PCBlend Logo" />
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="home.html">Inicio</a></li>
+                    <li><a href="products.html">Productos</a></li>
+                    <li><a href="customization.html">Personalización</a></li>
+                    <li><a href="about.html">Sobre nosotros</a></li>
+                    <li><a href="contact.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 PCBlend. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../scripts/chatbot.js"></script>
+</body>
+
+</html>

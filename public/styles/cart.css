@@ -1,0 +1,57 @@
+.cart-container {
+    margin-top: 20px;
+}
+
+.cart-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.cart-container th,
+.cart-container td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+.cart-container th {
+    background-color: #f4f4f4;
+}
+
+.cart-container td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.cart-container td input[type="number"] {
+    width: 60px;
+    padding: 5px;
+}
+
+.cart-container td button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #ff0000;
+    color: #fff;
+    cursor: pointer;
+}
+
+.cart-summary {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.cart-summary p {
+    margin-bottom: 10px;
+}
+
+.empty-cart {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.empty-cart p {
+    margin-bottom: 10px;
+}
