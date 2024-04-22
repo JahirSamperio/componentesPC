@@ -1,7 +1,8 @@
 import express from 'express';
 import { dbConnection } from '../db/conexion.js';
 import cors from 'cors';
-import routes from '../routes/routes.js' 
+import routes from '../routes/routes.js'
+import fileUpload from 'express-fileupload'; 
 
 class Server {
     constructor() {
@@ -44,6 +45,11 @@ class Server {
 
         //Habilitar CSRF
         // this.app.use(csrf({cookie: true}));
+        //carga de archivos
+        this.app.use(fileUpload({
+            useTempFiles : true,
+            tempFileDir : '/tmp/'
+        })); 
 
     }
 

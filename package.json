@@ -10,9 +10,11 @@
   "author": "Sergio Jaaziel Rojo Cisneros, Jahir Alberto Samperio",
   "license": "ISC",
   "dependencies": {
+    "cloudinary": "^2.1.0",
     "cors": "^2.8.5",
     "ejs": "^3.1.10",
     "express": "^4.19.2",
+    "express-fileupload": "^1.5.0",
     "express-validator": "^7.0.1",
     "mysql2": "^3.9.6"
   },
