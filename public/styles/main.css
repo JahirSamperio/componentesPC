@@ -6,6 +6,9 @@ body {
     color: #333;
     line-height: 1.6;
 }
+main {
+    margin: 20px; /* Puedes ajustar este valor según tus necesidades */
+}
 
 .container {
     max-width: 1200px;
@@ -139,6 +142,14 @@ nav ul li a.active {
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s;
+    flex-basis: calc(33.33% - 20px); /* Ancho del producto, con 20px de separación entre ellos */
+    margin-bottom: 20px;
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho */
+}
+.product-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .product:hover {
@@ -309,4 +320,60 @@ footer {
 .footer-bottom {
     text-align: center;
     font-size: 14px;
+}
+
+.product-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 30px;
+}
+
+.product-image {
+    flex: 1;
+    max-width: 50%;
+    margin-right: 30px;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-info {
+    flex: 1;
+    max-width: 50%;
+}
+
+.product-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-price {
+    font-size: 20px;
+    color: #ff5500;
+    margin-bottom: 20px;
+}
+
+.product-description {
+    margin-bottom: 20px;
+}
+
+.product-specifications {
+    margin-bottom: 30px;
+}
+
+.product-specifications h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.product-specifications ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.product-actions .btn {
+    margin-right: 10px;
 }

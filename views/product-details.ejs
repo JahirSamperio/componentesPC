@@ -35,14 +35,14 @@
     <main class="container">
         <div class="product-details">
             <div class="product-image">
-                <img src="" alt="Producto" id="product-image">
+                <img src="<%= componente.imagen %>" alt="Producto" id="product-image">
             </div>
             <div class="product-info">
-                <h1 id="product-name"></h1>
-                <p class="product-price">Precio: <span id="product-price"></span></p>
+                <h1 id="product-name"><%= componente.nombre %></h1>
+                <p class="product-price">Precio: <%= componente.precio %><span id="product-price"></span></p>
                 <p class="product-description" id="product-description"></p>
                 <div class="product-specifications">
-                    <h3>Especificaciones:</h3>
+                    <h3>Especificaciones: <%= componente.especificaciones %></h3>
                     <ul id="product-specifications"></ul>
                 </div>
                 <div class="product-actions">

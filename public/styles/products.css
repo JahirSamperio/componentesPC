@@ -73,3 +73,71 @@
 .pagination button {
     margin: 0 10px;
 }
+
+
+.card {
+    display: flex;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    text-align: justify;
+    margin-bottom: 2rem;    
+}
+
+.half-left {
+    flex: 1;
+    display: grid;
+    align-items: center;
+}
+.half-right {
+    flex: 2
+}
+
+.botones-seccion{
+    display: flex;
+    justify-content: right;
+}
+#continuar {
+    flex: 2
+}
+
+#evaluacion {
+    flex: 1
+}
+
+
+.continue-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+}
+
+.continue-button:hover {
+    background-color: #388e3c; /* Cambiar el color al pasar el ratón */
+}
+
+.evaluacion-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #2c77bd;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+
+}
+
+.evaluacion-button:hover {
+    background-color: rgba(60, 32, 219, 0.432); /* Cambiar el color al pasar el ratón */
+}
+
+.botones-seccion{
+    display: flex;
+    justify-content: right;
+}

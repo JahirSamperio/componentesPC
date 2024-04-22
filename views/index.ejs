@@ -14,7 +14,7 @@
             </div>
             <ul>
                 <li><a href="home.html" class="active">Inicio</a></li>
-                <li><a href="products.html">Productos</a></li>
+                <li><a href="http://localhost:8080/productos">Productos</a></li>
                 <li><a href="customization.html">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li>
@@ -38,11 +38,15 @@
             <a href="pages/products.html" class="btn">Ver productos</a>
         </section>
 
-        <section id="featured-products">
-            <h2>Productos destacados</h2>
+        <h2 style="display: flex; justify-content: center;">Productos destacados</h2>
+        <section id="featured-products" class="product-container">
             <% productos.forEach((producto, index)=> { %>
-                <h2 class="title-text"><%= producto.nombre %></h2>
-                <p><%= producto.correo %></p>
+                <div class="product">
+                    <img src="<%= producto.imagen %>" alt="" style="width: 225px; height: 45%;"/>
+                    <h3><%= producto.nombre %></h3>
+                    <p><%= producto.descripcion %></p>
+                    <a href="http://localhost:8080/componentes/<%= producto.id %>" class="btn">Ver detalles</a>
+                </div>
             <% }); %>
         </section>
 

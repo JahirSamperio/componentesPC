@@ -1,6 +1,6 @@
 import {v2 as cloudinary} from 'cloudinary'
 import uploadCloudinary from '../uploads/cloudinary.js';
-import { newComponentes, insertImage } from '../models/componentesModel.js';
+import { newComponentes, insertImage, getComponentes, profileComponentes } from '../models/componentesModel.js';
 
 //Configurando cloudinary
 cloudinary.config(process.env.CLOUDINARY_URL);
@@ -43,6 +43,35 @@ const agregarComponente = async (req, res) => {
 
 
     } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            error: "Error en el servidor"
+        })
+    }
+}
+
+const getComponente = async (req, res) => {
+    try {
+        const componentes =  await getComponentes();
+        return res.status(200).json({
+            componentes
+        })
+    } catch (error) {
+        
+    }
+}
+
+const profileComponente = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const componentes = await profileComponentes(id);
+
+        //Desestructura el arreglo
+        const componente = componentes[0];
+        res.render('product-details', {
+            componente: componente
+        })
+    } catch (error) {
         return res.status(500).json({
             error: "Error en el servidor"
         })
@@ -51,5 +80,7 @@ const agregarComponente = async (req, res) => {
 
 export {
     agregarComponente,
-    agregarImagen
+    agregarImagen,
+    getComponente,
+    profileComponente
 }
