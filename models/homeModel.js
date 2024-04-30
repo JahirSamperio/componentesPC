@@ -5,7 +5,7 @@ function getProductos() {
     return new Promise((resolve, reject) => {
         conexion.query(
             `SELECT * 
-            FROM componentes LIMIT 3`,
+            FROM ensamblados LIMIT 3`,
             function (error, result, field) {
                 if (error) 
                     return reject(error);

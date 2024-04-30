@@ -15,11 +15,11 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="home.html"><img src="/images/logo.jpg" alt="PCBlend Logo" /></a>
+                <a href="http://localhost:8080"><img src="../images/logo.jpg" alt="PCBlend Logo" /></a>
             </div>
             <ul>
-                <li><a href="home.html">Inicio</a></li>
-                <li><a href="products.html" class="active">Productos</a></li>
+                <li><a href="http://localhost:8080">Inicio</a></li>
+                <li><a href="http://localhost:8080/productos" class="active">Productos</a></li>
                 <li><a href="customization.html">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li>
@@ -89,15 +89,22 @@
                     <% productos.forEach((producto, index)=> { %>
                         <div class="card">
                             <div class="half-left">
-                                <img src="<%= producto.imagen %>" alt="" style="width: 225px; height: 45%;"/>
+                                <img src="<%= producto.imagen %>" alt="" style="width: 225px; height: 45%;" />
                             </div>
                             <div class="half-right">
-                                <h2 class=""><strong></strong> <%= producto.nombre %></h2>
-                                <p><%= producto.descripcion %></p>
-                                <p><strong>Precio: </strong><%= producto.precio %></p>
+                                <h2 class=""><strong></strong>
+                                    <%= producto.nombre %>
+                                </h2>
+                                <p>
+                                    <%= producto.descripcion %>
+                                </p>
+                                <p><strong>Precio: </strong>
+                                    <%= producto.precio %>
+                                </p>
                                 <div class="botones-seccion">
                                     <div id="evaluacion">
-                                        <a href="http://localhost:8080/evaluacion/" class="evaluacion-button">Detalles</a>
+                                        <a href="http://localhost:8080/evaluacion/"
+                                            class="evaluacion-button">Detalles</a>
                                     </div>
                                     <div id="continuar">
                                         <a href="http://localhost:8080/leccion/" class="continue-button">Agregar</a>
@@ -114,15 +121,6 @@
             <button id="prev-page" class="btn" disabled>Anterior</button>
             <span id="current-page">1</span> / <span id="total-pages"></span>
             <button id="next-page" class="btn">Siguiente</button>
-        </div>
-
-        <div class="chatbot-container">
-            <div class="chat-display" id="chat-display"></div>
-            <div class="chat-input">
-                <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
-                <button onclick="enviarPregunta()">Enviar</button>
-                <button id="limpiar-btn" onclick="limpiarConversacion()">Clean<button>
-            </div>
         </div>
     </main>
 
@@ -162,8 +160,77 @@
         </div>
     </footer>
 
-    <script src="../scripts/products.js"></script>
-    <script src="../scripts/chatbot.js"></script>
+    <div class="chatbot-container">
+        <div id="chat-display"></div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
+                <button onclick="enviarPregunta()">Enviar</button>
+                <button id="limpiar-btn" onclick="limpiarConversacion()">Clean</button>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const userInput = document.getElementById('user-input');
+            userInput.addEventListener('keydown', function (event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    enviarPregunta();
+                    scrollChatToBottom();
+                }
+            });
+        });
+
+        function enviarPregunta() {
+            const userInput = document.getElementById("user-input").value;
+            const userInputCleaned = userInput.toLowerCase().trim();
+
+            mostrarMensajeUsuario(userInputCleaned);
+
+            let respuesta;
+            if (userInputCleaned.includes("hola")) {
+                respuesta = "¡Hola! ¿En qué puedo ayudarte hoy?";
+            } else if (userInputCleaned.includes("componentes")) {
+                respuesta = "Tenemos una amplia variedad de componentes disponibles. ¿Estás buscando algo en particular?";
+            } else if (userInputCleaned.includes("ensamblados")) {
+                respuesta = "Ofrecemos ensamblados personalizados según tus necesidades. ¿Tienes alguna preferencia en cuanto a rendimiento o presupuesto?";
+            } else if (userInputCleaned.includes("compatibilidad")) {
+                respuesta = "Para verificar la compatibilidad entre componentes, te recomiendo utilizar nuestra herramienta de compatibilidad en la sección de 'Personalización'. Si tienes alguna duda específica, házmelo saber.";
+            } else if (userInputCleaned.includes("sugerencia")) {
+                respuesta = "Para obtener sugerencias personalizadas, te recomiendo completar nuestro cuestionario en la página principal. También puedes explorar nuestros ensamblados preconfigurados en la sección de 'Productos'.";
+            } else {
+                respuesta = "Lo siento, no tengo una respuesta específica para esa pregunta. Si necesitas más información, te sugiero visitar nuestras secciones de 'Productos' y 'Personalización', o contactar a nuestro equipo de soporte.";
+            }
+
+            mostrarRespuestaBot(respuesta);
+
+            // Limpiar el cuadro de entrada después de procesar la pregunta
+            document.getElementById("user-input").value = "";
+        }
+
+        function mostrarMensajeUsuario(mensaje) {
+            const chatDisplay = document.getElementById("chat-display");
+            chatDisplay.innerHTML += `<div class="user-message">${mensaje}</div>`;
+            scrollChatToBottom();
+        }
+
+        function mostrarRespuestaBot(respuesta) {
+            const chatDisplay = document.getElementById("chat-display");
+            chatDisplay.innerHTML += `<div class="bot-message">${respuesta}</div>`;
+            scrollChatToBottom();
+        }
+
+        function scrollChatToBottom() {
+            const chatDisplay = document.getElementById("chat-display");
+            chatDisplay.scrollTop = chatDisplay.scrollHeight;
+        }
+
+        function limpiarConversacion() {
+            const chatDisplay = document.getElementById("chat-display");
+            chatDisplay.innerHTML = "";
+        }
+    </script>
 </body>
 
 </html>

@@ -1,16 +1,17 @@
-
 /* Estilos para el chatbot */
 .chatbot-container {
     position: fixed;
+    height: 400px;
     bottom: 20px;
     right: 20px;
-    background-color: #6d6969;
-    border: 1px solid #000000;
+    background-color: #f8f8f8;
+    border: 1px solid #ccc;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     display: flex;
     flex-direction: column;
     max-width: 300px;
+    z-index: 9999;
 }
 
 #chat-display {
@@ -29,7 +30,7 @@
 
 button {
     padding: 10px;
-    background-color: #3f61cf;
+    background-color: #ff5c00;
     color: white;
     border: none;
     border-radius: 5px;
@@ -37,18 +38,15 @@ button {
 }
 
 .user-message {
-    background-color: #91d7db;
-    /* Color de fondo para mensajes de pregunta */
+    background-color: #e0e0e0;
     padding: 10px;
     margin: 5px 0;
     border-radius: 10px;
 }
 
 .bot-message {
-    background-color: #7c93c8;
-    /* Color de fondo para mensajes de respuesta */
-    color: rgb(255, 255, 255);
-    /* Color del texto */
+    background-color: #ff5c00;
+    color: white;
     padding: 10px;
     margin: 5px 0;
     border-radius: 10px;
@@ -56,26 +54,16 @@ button {
 
 #limpiar-btn {
     position: absolute;
-    /* Establece una posición absoluta */
     top: 10px;
-    /* Ubica el botón 10px desde la parte superior del contenedor */
     right: 10px;
-    /* Ubica el botón 10px desde el borde derecho del contenedor */
-    background-color: #689ad391;
-    /* Color de fondo azul */
+    background-color: #ccc;
     color: white;
-    /* Color de texto blanco */
     border: none;
-    /* Sin borde */
     padding: 8px 16px;
-    /* Relleno interno */
     cursor: pointer;
-    /* Cambiar cursor al pasar sobre el botón */
     border-radius: 5px;
-    /* Bordes redondeados */
 }
 
 #limpiar-btn:hover {
-    background-color: #0066ff;
-    /* Color de fondo azul oscuro al pasar el cursor */
+    background-color: #999;
 }
