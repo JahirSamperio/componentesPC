@@ -1,6 +1,7 @@
 /* Estilos para el chatbot */
 .chatbot-container {
     position: fixed;
+    height: 400px;
     bottom: 20px;
     right: 20px;
     background-color: #f8f8f8;
