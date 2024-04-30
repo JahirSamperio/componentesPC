@@ -13,11 +13,11 @@
     <header>
         <nav>
             <div class="logo">
-                <a href="home.html"><img src="/images/logo.jpg" alt="PCBlend Logo" /></a>
+                <a href="http://localhost:8080"><img src="../public/images/logo.jpg" alt="PCBlend Logo" /></a>
             </div>
             <ul>
-                <li><a href="home.html">Inicio</a></li>
-                <li><a href="products.html">Productos</a></li>
+                <li><a href="http://localhost:8080">Inicio</a></li>
+                <li><a href="http://localhost:8080/productos">Productos</a></li>
                 <li><a href="customization.html" class="active">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li>
@@ -63,15 +63,6 @@
             </div>
             <!-- Agrega más categorías de componentes (tarjeta gráfica, memoria RAM, etc.) -->
         </div>
-
-        <div class="chatbot-container">
-            <div class="chat-display" id="chat-display"></div>
-            <div class="chat-input">
-                <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
-                <button onclick="enviarPregunta()">Enviar</button>
-                <button id="limpiar-btn" onclick="limpiarConversacion()">Clean<button>
-            </div>
-        </div>
     </main>
 
     <footer>
@@ -110,7 +101,15 @@
         </div>
     </footer>
 
-    <script src="../scripts/customization.js"></script>
-    <script src="../scripts/chatbot.js"></script>
+    <div class="chatbot-container">
+        <div class="chat-display" id="chat-display"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
+            <button onclick="enviarPregunta()">Enviar</button>
+            <button id="limpiar-btn" onclick="limpiarConversacion()">Clean</button>
+        </div>
+    </div>
+
+    <script src="../routes/chatbot.js"></script>
 </body>
 </html>
