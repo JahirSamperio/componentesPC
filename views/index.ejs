@@ -1,29 +1,30 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PCBlend - Inicio</title>
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../styles/main.css" />
+    <link rel="stylesheet" href="../styles/responsive.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
-                <a href="http://localhost:8080"><img src="../public/images/logo.jpg" alt="PCBlend Logo" /></a>
+                <a href="http://localhost:8080"><img src="../images/logo.jpg" alt="PCBlend Logo" /></a>
             </div>
             <ul>
                 <li><a href="http://localhost:8080" class="active">Inicio</a></li>
-                <li><a href="http://localhost:8080/productos">Productos</a></li>
-                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
-                <li>
-                    <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
-                </li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
             </ul>
             <div class="user-menu">
                 <a href="login.html">Iniciar sesión</a>
-                <a href="register.html">Registrarse</a>
+                <a href="http://localhost:8080/registro">Registrarse</a>
             </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -34,9 +35,12 @@
     <main>
         <section id="hero">
             <h1>Bienvenido a PCBlend</h1>
-            <p>Descubre el poder de la personalización y crea la PC de tus sueños.</p>
-            <a href="pages/products.html" class="btn">Ver productos</a>
+            <div class="hero-image">
+                <img src="../images/hero.webp" alt="Hero Image" />
+            </div>
         </section>
+        <p>Descubre el poder de la personalización y crea la PC de tus sueños.</p>
+        <a href="http://localhost:8080/productos/ensamblados" class="btn">Ver productos</a>
 
         <h2 style="display: flex; justify-content: center;">Productos destacados</h2>
         <section id="featured-products" class="product-container">
@@ -44,30 +48,33 @@
                 <div class="product">
                     <img src="<%= producto.imagen %>" alt="" style="width: 225px; height: 45%;"/>
                     <h3><%= producto.nombre %></h3>
-                    <p><%= producto.descripcion %></p>
-                    <a href="http://localhost:8080/componentes/<%= producto.id %>" class="btn">Ver detalles</a>
+                    <p><%= producto.especificaciones %></p>
+                    <a href="http://localhost:8080/<%= producto.id %>" class="btn">Ver detalles</a>
                 </div>
             <% }); %>
         </section>
 
         <section id="about">
             <h2>Sobre nosotros</h2>
+            <div class="about-image">
+                <img src="../images/about.webp" alt="About Image" />
+            </div>
             <p>PCBlend es tu destino para crear la PC perfecta. Ofrecemos componentes de alta calidad y la libertad de personalizar tu máquina según tus necesidades.</p>
         </section>
     </main>
 
     <footer>
         <div class="footer-top">
-            <div class="footer-logo">
-                <img src="../images/logo.png" alt="PCBlend Logo" />
+            <div class="logo">
+                <img src="../images/logo.jpg" alt="PCBlend Logo" />
             </div>
             <div class="footer-links">
                 <ul>
-                    <li><a href="home.html">Inicio</a></li>
-                    <li><a href="products.html">Productos</a></li>
-                    <li><a href="customization.html">Personalización</a></li>
-                    <li><a href="about.html">Sobre nosotros</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="http://localhost:8080" class="active">Inicio</a></li>
+                <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
+                <li><a href="favorites.html">Favoritos</a></li>
+                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                 </ul>
             </div>
             <div class="footer-social">

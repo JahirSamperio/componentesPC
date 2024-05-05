@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCBlend - Personalización</title>
     <link rel="stylesheet" href="../styles/main.css">
-    <link rel="stylesheet" href="../styles/customization.css">
+    <!-- <link rel="stylesheet" href="../styles/customization.css"> -->
+    <link rel="stylesheet" href="../styles/products.css">
     <link rel="stylesheet" href="../styles/chatbot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
+
 <body>
     <header>
         <nav>
             <div class="logo">
-                <a href="http://localhost:8080"><img src="../public/images/logo.jpg" alt="PCBlend Logo" /></a>
+                <a href="http://localhost:8080"><img src="../images/logo.jpg" alt="PCBlend Logo" /></a>
             </div>
             <ul>
                 <li><a href="http://localhost:8080">Inicio</a></li>
-                <li><a href="http://localhost:8080/productos">Productos</a></li>
-                <li><a href="customization.html" class="active">Personalización</a></li>
+                <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                <li><a href="http://localhost:8080/customization/componentes" class="active">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li>
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
@@ -37,46 +40,50 @@
     <main class="container">
         <h1>Personaliza tu ensamblado</h1>
 
-        <div class="component-selection">
-            <h2>Selecciona los componentes</h2>
-            <div class="component-category">
-                <h3>Procesador</h3>
-                <div class="card-container">
+        <section class="secciones">
+            <ul>
+                <% componentes.forEach((componente, index)=> { %>
                     <div class="card">
-                        <img src="/images/products/procesador1.webp" alt="Procesador 1">
-                        <div class="card-content">
-                            <h4>Nombre del procesador 1</h4>
-                            <p>Descripción del procesador 1</p>
-                            <button class="select-component" data-component="procesador" data-id="id-procesador-1">Seleccionar</button>
+                        <div class="half-left">
+                            <img src="<%=componente.imagen %>" alt="" style="width: 60%; height: 80%;" />
+                        </div>
+                        <div class="half-right">
+                            <h2 class=""><strong></strong>
+                                <%= componente.nombre %>
+                            </h2>
+                            <p>
+                                <%= componente.descripcion %>
+                            </p>
+                            <p><strong>Precio: </strong>
+                                <%= componente.precio %>
+                            </p>
+                            <div class="botones-seccion">
+                                <div id="evaluacion">
+                                    <a href="http://localhost:8080/evaluacion/" class="evaluacion-button">Detalles</a>
+                                </div>
+                                <div id="continuar">
+                                    <a href="http://localhost:8080/leccion/" class="continue-button">Agregar</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card">
-                        <img src="/images/products/procesador2.webp" alt="Procesador 2">
-                        <div class="card-content">
-                            <h4>Nombre del procesador 2</h4>
-                            <p>Descripción del procesador 2</p>
-                            <button class="select-component" data-component="procesador" data-id="id-procesador-2">Seleccionar</button>
-                        </div>
-                    </div>
-                    <!-- Agrega más tarjetas de procesadores -->
-                </div>
-            </div>
-            <!-- Agrega más categorías de componentes (tarjeta gráfica, memoria RAM, etc.) -->
-        </div>
+                    <% }); %>
+            </ul>
+        </section>
     </main>
 
     <footer>
         <div class="footer-top">
-            <div class="footer-logo">
+            <div class="logo">
                 <img src="/images/logo.jpg" alt="PCBlend Logo" />
             </div>
             <div class="footer-links">
                 <ul>
-                    <li><a href="home.html">Inicio</a></li>
-                    <li><a href="products.html">Productos</a></li>
-                    <li><a href="customization.html">Personalización</a></li>
-                    <li><a href="about.html">Sobre nosotros</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="http://localhost:8080" class="active">Inicio</a></li>
+                    <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                    <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
+                    <li><a href="favorites.html">Favoritos</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                 </ul>
             </div>
             <div class="footer-social">
@@ -102,20 +109,11 @@
     </footer>
 
     <div class="chatbot-container">
-        <div class="chat-display" id="chat-display"></div>
+        <div id="chat-display"></div>
         <div class="chat-input">
             <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
             <button onclick="enviarPregunta()">Enviar</button>
             <button id="limpiar-btn" onclick="limpiarConversacion()">Clean</button>
-        </div>
-    </div>
-
-    <div class="chatbot-container">
-        <div id="chat-display"></div>
-            <div class="chat-input">
-                <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
-                <button onclick="enviarPregunta()">Enviar</button>
-                <button id="limpiar-btn" onclick="limpiarConversacion()">Clean</button>
         </div>
     </div>
 
@@ -182,4 +180,5 @@
         }
     </script>
 </body>
+
 </html>

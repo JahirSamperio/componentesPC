@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +8,17 @@
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/product-details.css">
 </head>
+
 <body>
     <header>
         <nav>
             <div class="logo">
-                <a href="http://localhost:8080"><img src="../public/images/logo.jpg" alt="PCBlend Logo" /></a>
+                <a href="http://localhost:8080"><img src="../images/logo.jpg" alt="PCBlend Logo" /></a>
             </div>
             <ul>
                 <li><a href="http://localhost:8080">Inicio</a></li>
-                <li><a href="http://localhost:8080/productos">Productos</a></li>
-                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="http://localhost:8080/productos/ensamblados" class="active">Productos</a></li>
+                <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li>
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
@@ -38,11 +40,14 @@
                 <img src="<%= componente.imagen %>" alt="Producto" id="product-image">
             </div>
             <div class="product-info">
-                <h1 id="product-name"><%= componente.nombre %></h1>
-                <p class="product-price">Precio: <%= componente.precio %><span id="product-price"></span></p>
+                <h1 id="product-name">
+                    <%= componente.nombre %>
+                </h1>
+                <p class="product-price">Precio: $<%= componente.precio %><span id="product-price"></span></p>
                 <p class="product-description" id="product-description"></p>
                 <div class="product-specifications">
-                    <h3>Especificaciones: <%= componente.especificaciones %></h3>
+                    <h3>Especificaciones: <%= componente.descripcion %>
+                    </h3>
                     <ul id="product-specifications"></ul>
                 </div>
                 <div class="product-actions">
@@ -51,21 +56,21 @@
                 </div>
             </div>
         </div>
-        
+
     </main>
 
     <footer>
         <div class="footer-top">
-            <div class="footer-logo">
+            <div class="logo">
                 <img src="/images/logo.jpg" alt="PCBlend Logo" />
             </div>
             <div class="footer-links">
                 <ul>
-                    <li><a href="home.html">Inicio</a></li>
-                    <li><a href="products.html">Productos</a></li>
-                    <li><a href="customization.html">Personalización</a></li>
-                    <li><a href="about.html">Sobre nosotros</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="http://localhost:8080" class="active">Inicio</a></li>
+                    <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                    <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
+                    <li><a href="favorites.html">Favoritos</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                 </ul>
             </div>
             <div class="footer-social">
@@ -92,4 +97,5 @@
 
     <script src="../scripts/product-details.js"></script>
 </body>
+
 </html>

@@ -3,6 +3,6 @@ import {Router} from 'express';
 
 const router = Router();
 
-router.get('/', productos);
+router.get('/ensamblados', productos);
 
 export default router;

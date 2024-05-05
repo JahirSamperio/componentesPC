@@ -1,12 +1,23 @@
 import {conexion} from '../db/conexion.js'
 
-function insertImage(imagen, id) {
+function getComponentes(){
     return new Promise((resolve, reject) => {
         conexion.query(
-            `UPDATE ensamblados
-            SET imagen = '${imagen}'
-            WHERE id = '${id}'`,
-            function (error, result, field) {
+            `SELECT * FROM componentes LIMIT 10`,
+            function  (error, result, field) {
+                if (error) 
+                    return reject(error);
+                return resolve(result);
+            })
+    })
+}
+
+function profileComponentes(id){
+    return new Promise((resolve, reject) => {
+        conexion.query(
+            `SELECT * FROM componentes 
+            WHERE id='${id}'`,
+            function  (error, result, field) {
                 if (error) 
                     return reject(error);
                 return resolve(result);
@@ -15,5 +26,6 @@ function insertImage(imagen, id) {
 }
 
 export {
-    insertImage
+    getComponentes,
+    profileComponentes
 }

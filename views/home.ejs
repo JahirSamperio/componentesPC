@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,6 +9,7 @@
     <link rel="stylesheet" href="../styles/responsive.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <body>
     <header>
         <nav>
@@ -16,8 +18,8 @@
             </div>
             <ul>
                 <li><a href="http://localhost:8080" class="active">Inicio</a></li>
-                <li><a href="http://localhost:8080/productos">Productos</a></li>
-                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li>
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
@@ -25,7 +27,7 @@
             </ul>
             <div class="user-menu">
                 <a href="login.html">Iniciar sesión</a>
-                <a href="register.html">Registrarse</a>
+                <a href="http://localhost:8080/registro">Registrarse</a>
             </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
@@ -50,7 +52,8 @@
         <section id="about">
             <div class="about-content">
                 <h2>Sobre nosotros</h2>
-                <p>PCBlend es tu destino para crear la PC de tus sueños. Ofrecemos componentes de alta calidad y la libertad de personalizar tu máquina según tus necesidades.</p>
+                <p>PCBlend es tu destino para crear la PC de tus sueños. Ofrecemos componentes de alta calidad y la
+                    libertad de personalizar tu máquina según tus necesidades.</p>
                 <a href="about.html" class="btn">Leer más</a>
             </div>
             <div class="about-image">
@@ -61,15 +64,18 @@
             <h2>Lo que dicen nuestros clientes</h2>
             <div class="testimonial-slider">
                 <div class="testimonial">
-                    <p>"PCBlend me permitió crear la PC de mis sueños. La personalización fue fácil y el resultado final superó mis expectativas."</p>
+                    <p>"PCBlend me permitió crear la PC de mis sueños. La personalización fue fácil y el resultado final
+                        superó mis expectativas."</p>
                     <p class="testimonial-author">- John Doe</p>
                 </div>
                 <div class="testimonial">
-                    <p>"La atención al cliente de PCBlend es excepcional. Respondieron todas mis preguntas y me guiaron en el proceso de selección de componentes."</p>
+                    <p>"La atención al cliente de PCBlend es excepcional. Respondieron todas mis preguntas y me guiaron
+                        en el proceso de selección de componentes."</p>
                     <p class="testimonial-author">- Jane Smith</p>
                 </div>
                 <div class="testimonial">
-                    <p>"Estoy impresionado con la calidad de los ensamblados de PCBlend. Mi PC ha funcionado a la perfección desde el primer día."</p>
+                    <p>"Estoy impresionado con la calidad de los ensamblados de PCBlend. Mi PC ha funcionado a la
+                        perfección desde el primer día."</p>
                     <p class="testimonial-author">- Mark Johnson</p>
                 </div>
             </div>
@@ -84,16 +90,16 @@
     </main>
     <footer>
         <div class="footer-top">
-            <div class="footer-logo">
+            <div class="logo">
                 <img src="/images/logo.jpg" alt="PCBlend Logo" />
             </div>
             <div class="footer-links">
                 <ul>
-                    <li><a href="home.html">Inicio</a></li>
-                    <li><a href="products.html">Productos</a></li>
-                    <li><a href="customization.html">Personalización</a></li>
-                    <li><a href="about.html">Sobre nosotros</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="http://localhost:8080" class="active">Inicio</a></li>
+                    <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                    <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
+                    <li><a href="favorites.html">Favoritos</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                 </ul>
             </div>
             <div class="footer-social">
@@ -138,4 +144,5 @@
         document.addEventListener('DOMContentLoaded', mostrarProductos);
     </script>
 </body>
+
 </html>

@@ -110,7 +110,7 @@
 .continue-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #4caf50;
+    background-color: #ff7f00;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -119,13 +119,13 @@
 }
 
 .continue-button:hover {
-    background-color: #388e3c; /* Cambiar el color al pasar el ratón */
+    background-color: #ff800093; /* Cambiar el color al pasar el ratón */
 }
 
 .evaluacion-button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: #2c77bd;
+    background-color: #6f6b70;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
@@ -134,7 +134,7 @@
 }
 
 .evaluacion-button:hover {
-    background-color: rgba(60, 32, 219, 0.432); /* Cambiar el color al pasar el ratón */
+    background-color: #c5d3d93d; /* Cambiar el color al pasar el ratón */
 }
 
 .botones-seccion{

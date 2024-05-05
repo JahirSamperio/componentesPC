@@ -1,4 +1,6 @@
-import { getProductos } from "../models/homeModel.js"
+import { getProductos, profileEnsamblados } from "../models/homeModel.js"
+import { registroUser } from "../models/registroModel.js";
+import { productos } from "./productosController.js";
 
 const home = async (req, res ) => {
     try {
@@ -13,6 +15,35 @@ const home = async (req, res ) => {
     }
 }
 
+const registro = async (req, res) => {
+    try {
+        res.render('Registro');
+    } catch (error) {
+        return res.status(500).json({
+            error: "Error en el servidor"
+        })
+    }
+}
+
+const perfilEnsamblado = async (req,res) => {
+    try {
+        const {id}=req.params
+        const ensamblados = await profileEnsamblados(id);
+        
+        res.render('product-details', {
+            componente: ensamblados[0]
+
+        })
+    } catch (error) {
+        return res.status(500).json({
+            error: "Error en el servidor"
+        })
+    }
+
+}
+
 export {
-    home
+    home,
+    perfilEnsamblado,
+    registro
 }

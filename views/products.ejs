@@ -7,7 +7,7 @@
     <title>PCBlend - Productos</title>
     <link rel="stylesheet" href="../styles/main.css" />
     <link rel="stylesheet" href="../styles/products.css" />
-    <link rel="stylesheet" href="../styles/chatbot.css">
+    <link rel="stylesheet" href="../styles/chatbot.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
@@ -19,8 +19,8 @@
             </div>
             <ul>
                 <li><a href="http://localhost:8080">Inicio</a></li>
-                <li><a href="http://localhost:8080/productos" class="active">Productos</a></li>
-                <li><a href="customization.html">Personalización</a></li>
+                <li><a href="http://localhost:8080/productos/ensamblados" class="active">Productos</a></li>
+                <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li>
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
@@ -44,41 +44,21 @@
                 <label for="category">Categoría:</label>
                 <select id="category" name="category">
                     <option value="">Todas las categorías</option>
-                    <option value="procesadores">Procesadores</option>
-                    <option value="tarjetas-graficas">Tarjetas gráficas</option>
-                    <option value="placas-base">Placas base</option>
-                    <option value="memoria-ram">Memoria RAM</option>
-                    <option value="almacenamiento">Almacenamiento</option>
-                    <option value="fuentes-alimentacion">
-                        Fuentes de alimentación
-                    </option>
-                    <option value="refrigeracion">Refrigeración</option>
-                    <option value="cajas">Cajas</option>
+                    <option value="gaming">Gaming</option>
+                    <option value="diseno">Diseño</option>
+                    <option value="hogar">Hogar u Oficina</option>
+                    <option value="arquitectura">Arquitectura</option>
+                    <option value="streaming">Streaming</option>
+                    <option value="software">Software</option>
                 </select>
             </div>
             <div class="filter-group">
                 <label for="min-price">Precio mínimo:</label>
-                <input type="number" id="min-price" name="min-price" min="0" value="5000">
+                <input type="number" id="min-price" name="min-price" min="0" value="14000">
             </div>
             <div class="filter-group">
                 <label for="max-price">Precio máximo:</label>
                 <input type="number" id="max-price" name="max-price" min="0" value="100000">
-            </div>
-            <div class="filter-group">
-                <label for="brand">Marca:</label>
-                <select id="brand" name="brand">
-                    <option value="">Todas las marcas</option>
-                    <option value="intel">Intel</option>
-                    <option value="amd">AMD</option>
-                    <option value="nvidia">NVIDIA</option>
-                    <option value="asus">ASUS</option>
-                    <option value="msi">MSI</option>
-                    <option value="gigabyte">Gigabyte</option>
-                    <option value="corsair">Corsair</option>
-                    <option value="kingston">Kingston</option>
-                    <option value="seagate">Seagate</option>
-                    <option value="western-digital">Western Digital</option>
-                </select>
             </div>
             <button id="apply-filters" class="btn">Aplicar filtros</button>
         </div>
@@ -96,18 +76,18 @@
                                     <%= producto.nombre %>
                                 </h2>
                                 <p>
-                                    <%= producto.descripcion %>
+                                    <%= producto.especificaciones %>
                                 </p>
                                 <p><strong>Precio: </strong>
                                     <%= producto.precio %>
                                 </p>
                                 <div class="botones-seccion">
                                     <div id="evaluacion">
-                                        <a href="http://localhost:8080/evaluacion/"
+                                        <a href="http://localhost:8080"
                                             class="evaluacion-button">Detalles</a>
                                     </div>
                                     <div id="continuar">
-                                        <a href="http://localhost:8080/leccion/" class="continue-button">Agregar</a>
+                                        <a href="http://localhost:8080" class="continue-button">Agregar</a>
                                     </div>
                                 </div>
                             </div>
@@ -118,24 +98,31 @@
         </div>
 
         <div class="pagination">
-            <button id="prev-page" class="btn" disabled>Anterior</button>
-            <span id="current-page">1</span> / <span id="total-pages"></span>
-            <button id="next-page" class="btn">Siguiente</button>
-        </div>
+            <% if (currentPage > 1) { %>
+                <a href="?page=<%= currentPage - 1 %>&size=<%= size %>" class="btn">Anterior</a>
+            <% } %>
+            
+            <span>Página <%= currentPage %> de <%= totalPages %></span>
+            
+            <% if (currentPage < totalPages) { %>
+                <a href="?page=<%= currentPage + 1 %>&size=<%= size %>" class="btn">Siguiente</a>
+            <% } %>
+        </div>        
+        
     </main>
 
     <footer>
         <div class="footer-top">
-            <div class="footer-logo">
+            <div class="logo">
                 <img src="/images/logo.jpg" alt="PCBlend Logo" />
             </div>
             <div class="footer-links">
                 <ul>
-                    <li><a href="home.html">Inicio</a></li>
-                    <li><a href="products.html">Productos</a></li>
-                    <li><a href="customization.html">Personalización</a></li>
-                    <li><a href="about.html">Sobre nosotros</a></li>
-                    <li><a href="contact.html">Contacto</a></li>
+                    <li><a href="http://localhost:8080" class="active">Inicio</a></li>
+                    <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                    <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
+                    <li><a href="favorites.html">Favoritos</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                 </ul>
             </div>
             <div class="footer-social">
@@ -162,10 +149,10 @@
 
     <div class="chatbot-container">
         <div id="chat-display"></div>
-            <div class="chat-input">
-                <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
-                <button onclick="enviarPregunta()">Enviar</button>
-                <button id="limpiar-btn" onclick="limpiarConversacion()">Clean</button>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
+            <button onclick="enviarPregunta()">Enviar</button>
+            <button id="limpiar-btn" onclick="limpiarConversacion()">Clean</button>
         </div>
     </div>
 
