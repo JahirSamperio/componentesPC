@@ -17,7 +17,7 @@ const home = async (req, res ) => {
 
 const registro = async (req, res) => {
     try {
-        res.render('Registro');
+        res.render('register');
     } catch (error) {
         return res.status(500).json({
             error: "Error en el servidor"
