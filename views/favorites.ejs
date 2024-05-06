@@ -7,6 +7,7 @@
     <title>PCBlend - Favoritos</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/favorites.css">
+    <link rel="stylesheet" href="../styles/toast.css"> <!-- Nuevo archivo de estilos para el toast -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 
@@ -21,7 +22,8 @@
                 <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
                 <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
                 <li><a href="http://localhost:8080/favorites" class="active">Favoritos</a></li>
-                <li><a href="http://localhost:8080/cart"><i class="fas fa-shopping-cart"></i> Carrito</a></li>            </ul>
+                <li><a href="http://localhost:8080/cart"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+            </ul>
             <% if (autenticado) { %>
                 <div class="user-menu">
                     <form action="http://localhost:8080/login/logout" method="post">
@@ -57,14 +59,14 @@
                             <p>
                                 <%= favorito.especificaciones %>
                             </p>
-                            
+
                             <span class="price">$<%= favorito.precio %></span>
                             <div class="favorite-item-actions">
-                                <form id="deleteForm" action="http://localhost:8080/eliminar/<%= favorito.id_favorito %>"
-                                    method="post">
+                                <form id="deleteForm"
+                                    action="http://localhost:8080/eliminar/<%= favorito.id_favorito %>" method="post">
                                     <input type="hidden" name="_method" value="DELETE">
                                     <!-- Este campo oculto indica al servidor que es una solicitud DELETE -->
-                                    <button type="submit" class="btn-remove-favorite">Eliminar</button>
+                                    <button type="button" class="btn-remove-favorite">Eliminar</button>
                                 </form>
                                 <button class="btn-add-to-cart">Agregar al carrito</button>
                             </div>
@@ -120,41 +122,61 @@
         </div>
     </footer>
 
-    <script src="../scripts/favorites.js"></script>
+    <div class="toast" id="toastMessage"></div>
+
     <script>
-        // Escuchar el evento submit del formulario
         document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('deleteForm');
-            form.addEventListener('submit', async function (event) {
-                event.preventDefault(); // Prevenir el envío del formulario por defecto
+    const deleteButtons = document.querySelectorAll('.btn-remove-favorite');
 
-                const url = form.action;
-                const method = form.method;
-                
-                try {
-                    const response = await fetch(url, {
-                        method: method
-                    });
-                    const data = await response.json();
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', async function (event) {
+            event.preventDefault(); // Prevenir el envío del formulario por defecto
 
-                    if (data.success) {
-                        // Mostrar una alerta de éxito
-                        alert('Eliminado exitosamente de favoritos');
-                        // Opcional: recargar la página o realizar otras acciones
-                        // Recargar la página
-                        window.location.reload();
-                    } else {
-                        // Mostrar una alerta de error si la eliminación falló
-                        alert(data.message);
-                    }
-                } catch (error) {
-                    // Manejar errores de red u otros errores
-                    console.error('Error:', error);
-                    alert('Error al eliminar el favorito');
+            const form = button.closest('form'); // Encontrar el formulario asociado al botón
+            const url = form.action;
+            const method = form.method;
+
+            try {
+                const response = await fetch(url, {
+                    method: method
+                });
+                const data = await response.json();
+
+                if (data.success) {
+                    // Mostrar una alerta de éxito
+                    showAlert('Eliminado exitosamente de favoritos');
+                    // Opcional: recargar la página o realizar otras acciones
+                    // Recargar la página
+                    window.location.reload();
+                } else {
+                    // Mostrar una alerta de error si la eliminación falló
+                    showAlert(data.message);
                 }
-            });
+            } catch (error) {
+                // Manejar errores de red u otros errores
+                console.error('Error:', error);
+                showAlert('Error al eliminar el favorito');
+            }
         });
+    });
+});
+
+function showAlert(message) {
+    const toastElement = document.querySelector('.toast');
+    if (!toastElement) {
+        console.error('No se encontró el elemento de la alerta');
+        return;
+    }
+    toastElement.textContent = message;
+    toastElement.classList.add('show');
+
+    // Ocultar la alerta después de un tiempo
+    setTimeout(() => {
+        toastElement.classList.remove('show');
+    }, 3000); // 3 segundos
+}
     </script>
+
 </body>
 
 </html>
