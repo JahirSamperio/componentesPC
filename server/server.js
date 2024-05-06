@@ -4,6 +4,7 @@ import cors from 'cors';
 import routes from '../routes/routes.js'
 import fileUpload from 'express-fileupload'; 
 import cookieParser from 'cookie-parser';
+import methodOverride from 'method-override';
 
 class Server {
     constructor() {
@@ -43,6 +44,8 @@ class Server {
 
         //Habilitar cookie parser
         this.app.use(cookieParser());
+
+        this.app.use(methodOverride('_method'));
 
         //Habilitar CSRF
         // this.app.use(csrf({cookie: true}));

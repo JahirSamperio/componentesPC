@@ -90,6 +90,7 @@ const profileComponente = async (req, res) => {
             token: tokenId
         })
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             error: "Error en el servidor"
         })
