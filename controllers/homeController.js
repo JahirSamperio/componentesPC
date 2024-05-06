@@ -1,6 +1,7 @@
 import { getProductos, profileEnsamblados } from "../models/homeModel.js"
 import { registroUser } from "../models/registroModel.js";
 import { productos } from "./productosController.js";
+import { agregar, favorites } from "../models/favoritosModel.js";
 import jwt from 'jsonwebtoken';
 import {config} from 'dotenv';
 config();
@@ -81,6 +82,36 @@ const favoritos = async (req, res) => {
 
         let tokenId;
         let autenticado;
+        let favorite;
+        if(_token){
+            autenticado=true;
+            const token = jwt.verify(_token, process.env.JWT_SECRET);
+            tokenId = token.id;
+
+            //Buscar favoritos por medio del id 
+            favorite = await favorites(tokenId);
+        } else {
+            autenticado=false
+        }
+        res.render('favorites', {
+            favoritos: favorite,
+            autenticado: autenticado,
+            token: tokenId
+        })
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+            error: "Error en el servidor"
+        })
+    }
+}
+
+const login = async (req, res) => {
+    try {
+        const {_token} = req.cookies;
+
+        let tokenId;
+        let autenticado;
         if(_token){
             autenticado=true;
             const token = jwt.verify(_token, process.env.JWT_SECRET);
@@ -88,7 +119,7 @@ const favoritos = async (req, res) => {
         } else {
             autenticado=false
         }
-        res.render('favorites', {
+        res.render('login', {
             autenticado: autenticado,
             token: tokenId
         })
@@ -99,9 +130,23 @@ const favoritos = async (req, res) => {
     }
 }
 
-const login = async (req, res) => {
+const cart = async(req, res) => {
     try {
-        res.render('login')
+        const {_token} = req.cookies;
+
+        let tokenId;
+        let autenticado;
+        if(_token){
+            autenticado=true;
+            const token = jwt.verify(_token, process.env.JWT_SECRET);
+            tokenId = token.id;
+        } else {
+            autenticado=false
+        }
+        res.render('cart', {
+            autenticado: autenticado,
+            token: tokenId
+        })
     } catch (error) {
         return res.status(500).json({
             error: "Error en el servidor"
@@ -114,5 +159,6 @@ export {
     perfilEnsamblado,
     registro, 
     favoritos,
-    login
+    login,
+    cart
 }

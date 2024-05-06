@@ -65,6 +65,7 @@ const cerrarSesion = async(req, res) => {
          // Redireccionar o enviar una respuesta JSON u HTML indicando que la sesión se ha cerrado
         res.redirect('http://localhost:8080');
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             error: "Error en el servidor"
         })

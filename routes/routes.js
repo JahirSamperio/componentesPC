@@ -24,6 +24,8 @@ app.use('/registrar',registroRouter);
 
 app.use('/favoritos', favoritosRouter)
 
+app.use('/eliminar', favoritosRouter)
+
 app.use('/login', loginRouter)
 
 
