@@ -54,16 +54,24 @@
                         <th>Precio</th>
                         <th>Cantidad</th>
                         <th>Subtotal</th>
-                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- Los productos del carrito se generarán dinámicamente aquí -->
+                    <% let total = 0; %>
+                    <% carrito.forEach(producto => { %>
+                        <tr>
+                            <td><%= producto.nombre %></td>
+                            <td>$<%= producto.precio %></td>
+                            <td><%= producto.cantidad %></td>
+                            <td>$<%= producto.precio * producto.cantidad %></td>
+                        </tr>
+                        <% total += producto.precio * producto.cantidad; %>
+                    <% }); %>
                 </tbody>
             </table>
-
+        
             <div class="cart-summary">
-                <p>Total: <span id="cart-total"></span></p>
+                <p>Total: <span style="font-weight: bold ;" id="cart-total">$<%= total %></span></p>
                 <button id="btn-checkout" class="btn">Proceder al pago</button>
             </div>
         </div>
