@@ -1,28 +1,41 @@
-import { getComponentes } from "../models/ensambladosModel.js";
+import { getComponentes, profileComponentes } from "../models/ensambladosModel.js";
+import { conexion } from "../db/conexion.js";
+
+const getCategorias = () => {
+    return new Promise((resolve, reject) => {
+        conexion.query('SELECT DISTINCT categoria FROM componentes', function(error, result) {
+            if (error) return reject(error);
+            return resolve(result.map(item => item.categoria));
+        });
+    });
+}
 
 const callComponentes = async (req, res) => {
     try {
-        const page = parseInt(req.query.page) || 1; // Página actual, si no se especifica, será la primera
-        const size = parseInt(req.query.size) || 5; // Tamaño de la página, si no se especifica, será 5
+        const categories = await getCategorias(); // Obtener categorías de la base de datos
+        const page = parseInt(req.query.page) || 1;
+        const size = parseInt(req.query.size) || 5;
 
-        const offset = (page - 1) * size; // Calcular el desplazamiento
-        const componentes = await getComponentes(offset, size); // Obtener componentes para la página actual
+        const offset = (page - 1) * size;
+        const componentes = await getComponentes(offset, size);
 
-        const hasNextPage = componentes.length === size; // Verificar si hay una página siguiente
+        const hasNextPage = componentes.length === size;
 
         res.render('customization', {
+            categories: categories,
             componentes: componentes,
             currentPage: page,
             hasNextPage: hasNextPage,
-            size: size // Pasar el tamaño de la página a la vista
+            size: size
         });
     } catch (error) {
-        return res.status(500).json({
-            error: "Error en el servidor"
-        });
+        console.log(error);
+        return res.status(500).json({ error: "Error en el servidor" });
+
     }
 }
 
 export {
-    callComponentes
+    callComponentes,
+    getCategorias
 }

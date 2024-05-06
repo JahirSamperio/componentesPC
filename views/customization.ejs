@@ -36,61 +36,19 @@
         </nav>
     </header>
 
-    <!-- Mini carrito -->
-    <div class="mini-cart" id="miniCart">
-        <h3>Carrito</h3>
-        <ul id="cartItems"></ul>
-        <p class="total">Total: <span id="totalPrice">0</span></p>
-    </div>
-
-
-    <main class="container">
-        <h1>Personaliza tu ensamblado</h1>
-
-        <section class="secciones">
-            <ul>
-                <% componentes.forEach((componente, index)=> { %>
-                    <div class="card">
-                        <div class="half-left">
-                            <img src="<%=componente.imagen %>" alt="" style="width: 60%; height: 80%;" />
-                        </div>
-                        <div class="half-right">
-                            <h2 class=""><strong></strong>
-                                <%= componente.nombre %>
-                            </h2>
-                            <p>
-                                <%= componente.descripcion %>
-                            </p>
-                            <p><strong>Precio: </strong>
-                                <%= componente.precio %>
-                            </p>
-                            <div class="botones-seccion">
-                                <div id="evaluacion">
-                                    <a href="http://localhost:8080/perfil/<%= componente.id %>"
-                                        class="evaluacion-button">Detalles</a>
-                                </div>
-                                <div id="continuar">
-                                    <a href="http://localhost:8080/leccion/" class="continue-button">Agregar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <% }); %>
+    <main class="customization-container">
+        <div class="component-selection">
+            <ul id="productCategories" class="category-list">
+                <% categories.forEach(function(category) { %>
+                    <li><%= category %></li>
+                <% }); %>
             </ul>
-        </section>
-
-        <!-- Paginación -->
-        <div class="pagination">
-            <% if (currentPage> 1) { %>
-                <a href="?page=<%= currentPage - 1 %>&size=<%= size %>" class="btn">Anterior</a>
-                <% } %>
-
-                    <span>Página <%= currentPage %></span>
-
-                    <!-- Enlace a la página siguiente -->
-                    <% if (hasNextPage) { %>
-                        <a href="?page=<%= currentPage + 1 %>&size=<%= size %>" class="btn">Siguiente</a>
-                        <% } %>
+        </div>
+        <div class="customization-summary">
+            <h2>Detalles de Personalización</h2>
+            <div id="productDisplayArea">
+                <!-- Los productos se mostrarán aquí -->
+            </div>
         </div>
     </main>
 
@@ -130,6 +88,7 @@
         </div>
     </footer>
 
+    <!-- Chatbot como chat fijo -->
     <div class="chatbot-container">
         <div id="chat-display"></div>
         <div class="chat-input">
@@ -245,6 +204,18 @@
                 agregarAlCarrito(componenteNombre, componentePrecio);
             });
         });
+    </script>
+    <script>
+        document.getElementById('productCategories').addEventListener('click', function(e) {
+            if (e.target.tagName === 'LI') {
+                fetchProducts(e.target.textContent);
+            }
+        });
+
+        function fetchProducts(category) {
+            document.getElementById('productDisplayArea').innerHTML = 'Cargando productos para ' + category + '...';
+            // Suponiendo que obtienes datos de un servidor, podrías hacer una llamada AJAX aquí
+        }
     </script>
 </body>
 
