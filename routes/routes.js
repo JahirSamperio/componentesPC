@@ -7,6 +7,7 @@ import customizationRouter from './customization.js'
 import registroRouter from '../routes/registro.js'
 import favoritosRouter from '../routes/favoritos.js'
 import loginRouter from '../routes/login.js'
+import cartRouter from '../routes/cart.js'
 
 const app = express();  
 
@@ -27,6 +28,8 @@ app.use('/favoritos', favoritosRouter)
 app.use('/eliminar', favoritosRouter)
 
 app.use('/login', loginRouter)
+
+app.use('/cart', cartRouter)
 
 
 export default app;
