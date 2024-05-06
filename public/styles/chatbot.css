@@ -67,3 +67,44 @@ button {
 #limpiar-btn:hover {
     background-color: #999;
 }
+
+#minimizar-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1001;
+    transition: background-color 0.3s ease;
+}
+#minimizar-btn:hover {
+    background-color: #0056b3;
+}
+
+.chatbot-container {
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    z-index: 1000;
+    background-color: #f5f5f5;
+    border-radius: 10px 10px 0 0;
+    width: 300px;
+    transition: height 0.3s ease;
+    overflow-y: auto; /* Agregamos esta regla para activar el scroll cuando sea necesario */
+}
+
+.chatbot-container.minimized {
+    height: 40px; /* Altura mínima cuando está minimizado */
+    overflow: hidden; /* Ocultamos el contenido cuando está minimizado */
+}
+
+.chatbot-container .chat-display {
+    max-height: calc(100% - 40px); /* Ajustamos la altura máxima del chat-display */
+    overflow-y: auto; /* Habilitamos el scroll en el chat-display */
+}

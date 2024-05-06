@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCBlend - Personalización</title>
     <link rel="stylesheet" href="../styles/main.css">
-    <!-- <link rel="stylesheet" href="../styles/customization.css"> -->
     <link rel="stylesheet" href="../styles/products.css">
     <link rel="stylesheet" href="../styles/chatbot.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -29,13 +28,21 @@
             </ul>
             <div class="user-menu">
                 <a href="login.html">Iniciar sesión</a>
-                <a href="register.html">Registrarse</a>
+                <a href="http://localhost:8080/registrar/render">Registrarse</a>
             </div>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
         </nav>
     </header>
+
+    <!-- Mini carrito -->
+    <div class="mini-cart" id="miniCart">
+        <h3>Carrito</h3>
+        <ul id="cartItems"></ul>
+        <p class="total">Total: <span id="totalPrice">0</span></p>
+    </div>
+
 
     <main class="container">
         <h1>Personaliza tu ensamblado</h1>
@@ -59,7 +66,8 @@
                             </p>
                             <div class="botones-seccion">
                                 <div id="evaluacion">
-                                    <a href="http://localhost:8080/evaluacion/" class="evaluacion-button">Detalles</a>
+                                    <a href="http://localhost:8080/<%= componente.id %>"
+                                        class="evaluacion-button">Detalles</a>
                                 </div>
                                 <div id="continuar">
                                     <a href="http://localhost:8080/leccion/" class="continue-button">Agregar</a>
@@ -70,6 +78,20 @@
                     <% }); %>
             </ul>
         </section>
+
+        <!-- Paginación -->
+        <div class="pagination">
+            <% if (currentPage> 1) { %>
+                <a href="?page=<%= currentPage - 1 %>&size=<%= size %>" class="btn">Anterior</a>
+                <% } %>
+
+                    <span>Página <%= currentPage %></span>
+
+                    <!-- Enlace a la página siguiente -->
+                    <% if (hasNextPage) { %>
+                        <a href="?page=<%= currentPage + 1 %>&size=<%= size %>" class="btn">Siguiente</a>
+                        <% } %>
+        </div>
     </main>
 
     <footer>
@@ -178,6 +200,51 @@
             const chatDisplay = document.getElementById("chat-display");
             chatDisplay.innerHTML = "";
         }
+    </script>
+
+    <script>
+        // Variables para almacenar los componentes agregados y el precio total
+        let cartItems = [];
+        let totalPrice = 0;
+
+        function agregarAlCarrito(componente, precio) {
+            // Agregar el componente al carrito
+            cartItems.push({ nombre: componente, precio: precio });
+
+            // Actualizar el precio total
+            totalPrice += precio;
+
+            // Actualizar la vista del mini carrito
+            actualizarCarrito();
+        }
+
+        function actualizarCarrito() {
+            const cartItemsList = document.getElementById('cartItems');
+            const totalPriceElement = document.getElementById('totalPrice');
+
+            // Limpiar la lista de componentes
+            cartItemsList.innerHTML = '';
+
+            // Agregar los componentes al HTML
+            cartItems.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = `${item.nombre} - $${item.precio}`;
+                cartItemsList.appendChild(li);
+            });
+
+            // Actualizar el precio total
+            totalPriceElement.textContent = totalPrice;
+        }
+
+        // Función para agregar un componente al hacer clic en el botón "Agregar"
+        const agregarBotones = document.querySelectorAll('.continue-button');
+        agregarBotones.forEach(boton => {
+            boton.addEventListener('click', () => {
+                const componenteNombre = boton.closest('.half-right').querySelector('h2').textContent.trim();
+                const componentePrecio = parseFloat(boton.closest('.half-right').querySelector('strong').textContent.replace('Precio: ', '').trim());
+                agregarAlCarrito(componenteNombre, componentePrecio);
+            });
+        });
     </script>
 </body>
 

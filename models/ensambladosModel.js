@@ -1,15 +1,16 @@
 import {conexion} from '../db/conexion.js'
 
-function getComponentes(){
+function getComponentes(offset, size) {
     return new Promise((resolve, reject) => {
         conexion.query(
-            `SELECT * FROM componentes LIMIT 10`,
-            function  (error, result, field) {
+            `SELECT * FROM componentes LIMIT ?, ?`, [offset, size],
+            function (error, result, field) {
                 if (error) 
                     return reject(error);
                 return resolve(result);
-            })
-    })
+            }
+        );
+    });
 }
 
 function profileComponentes(id){
