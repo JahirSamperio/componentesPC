@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="../styles/responsive.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
+
 <body>
     <header>
         <nav>
@@ -29,17 +30,17 @@
                         <button type="submit">Cerrar sesión</button>
                     </form>
                 </div>
-            <% } else { %>
-                <!-- Si el usuario NO está autenticado, mostramos el contenido de este bloque -->
-                <div class="user-menu">
-                    <!-- Contenido del menú para usuarios NO autenticados -->
-                    <a href="http://localhost:8080/login">Iniciar sesión</a>
-                    <a href="http://localhost:8080/registrar/render">Registrarse</a>
-                </div>
-            <% } %>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+                <% } else { %>
+                    <!-- Si el usuario NO está autenticado, mostramos el contenido de este bloque -->
+                    <div class="user-menu">
+                        <!-- Contenido del menú para usuarios NO autenticados -->
+                        <a href="http://localhost:8080/login">Iniciar sesión</a>
+                        <a href="http://localhost:8080/registrar/render">Registrarse</a>
+                    </div>
+                    <% } %>
+                        <div class="menu-toggle">
+                            <i class="fas fa-bars"></i>
+                        </div>
         </nav>
     </header>
 
@@ -49,7 +50,7 @@
             <div class="hero-image">
                 <img src="../images/hero.webp" alt="Hero Image" />
                 <p>Descubre el poder de la personalización y crea la PC de tus sueños.</p>
-        <a href="http://localhost:8080/productos/ensamblados" class="btn">Ver productos</a>
+                <a href="http://localhost:8080/productos/ensamblados" class="btn">Ver productos</a>
             </div>
         </section>
 
@@ -57,12 +58,16 @@
         <section id="featured-products" class="product-container">
             <% productos.forEach((producto, index)=> { %>
                 <div class="product">
-                    <img src="<%= producto.imagen %>" alt="" style="width: 225px; height: 45%;"/>
-                    <h3><%= producto.nombre %></h3>
-                    <p><%= producto.especificaciones %></p>
+                    <img src="<%= producto.imagen %>" alt="" style="width: 225px; height: 45%;" />
+                    <h3>
+                        <%= producto.nombre %>
+                    </h3>
+                    <p>
+                        <%= producto.especificaciones %>
+                    </p>
                     <a href="http://localhost:8080/perfil/<%= producto.id %>" class="btn">Ver detalles</a>
                 </div>
-            <% }); %>
+                <% }); %>
         </section>
 
         <h2>Sobre nosotros</h2>
@@ -70,7 +75,8 @@
             <div class="about-image">
                 <img src="../images/about.webp" alt="About Image" />
             </div>
-            <p>PCBlend es tu destino para crear la PC perfecta. Ofrecemos componentes de alta calidad y la libertad de personalizar tu máquina según tus necesidades.</p>
+            <p>PCBlend es tu destino para crear la PC perfecta. Ofrecemos componentes de alta calidad y la libertad de
+                personalizar tu máquina según tus necesidades.</p>
         </section>
     </main>
 
@@ -81,11 +87,11 @@
             </div>
             <div class="footer-links">
                 <ul>
-                <li><a href="http://localhost:8080" class="active">Inicio</a></li>
-                <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
-                <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
-                <li><a href="favorites.html">Favoritos</a></li>
-                <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
+                    <li><a href="http://localhost:8080" class="active">Inicio</a></li>
+                    <li><a href="http://localhost:8080/productos/ensamblados">Productos</a></li>
+                    <li><a href="http://localhost:8080/customization/componentes">Personalización</a></li>
+                    <li><a href="favorites.html">Favoritos</a></li>
+                    <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
                 </ul>
             </div>
             <div class="footer-social">
@@ -111,4 +117,5 @@
     </footer>
 
 </body>
+
 </html>

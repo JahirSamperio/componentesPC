@@ -4,8 +4,8 @@
     height: 400px;
     bottom: 20px;
     right: 20px;
-    background-color: #f8f8f8;
-    border: 1px solid #ccc;
+    background-color: #cdc8c8;
+    border: 1px solid #f8f8f8;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
     display: flex;
@@ -31,14 +31,14 @@
 button {
     padding: 10px;
     background-color: #ff5c00;
-    color: white;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .user-message {
-    background-color: #e0e0e0;
+    background-color: #ffffff;
     padding: 10px;
     margin: 5px 0;
     border-radius: 10px;
@@ -56,7 +56,7 @@ button {
     position: absolute;
     top: 10px;
     right: 10px;
-    background-color: #ccc;
+    background-color: #b2b0b0;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -65,38 +65,46 @@ button {
 }
 
 #limpiar-btn:hover {
-    background-color: #999;
+    background-color: #918f8f;
 }
 
 #minimizar-btn {
-    position: fixed;
-    top: 20px;
-    left: 20px;
-    background-color: #007bff;
+    position: absolute; /* Cambiado de fixed a absolute */
+    top: 5px;            /* Ajuste fino de la posición */
+    left: 5px;           /* Ajuste fino de la posición */
+    background-color: #444145;
     color: white;
     border: none;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 20px;
+    width: 10px;         /* Tamaño reducido */
+    height: 10px;        /* Tamaño reducido */
+    font-size: 10px;     /* Ajuste del tamaño del icono */
     cursor: pointer;
+    display: flex;       /* Usar flexbox para centrar el ícono */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
     z-index: 1001;
     transition: background-color 0.3s ease;
 }
+
 #minimizar-btn:hover {
-    background-color: #0056b3;
+    background-color: #999;
 }
+
 
 .chatbot-container {
     position: fixed;
-    bottom: 0;
+    bottom: 20px;
     right: 20px;
-    z-index: 1000;
-    background-color: #f5f5f5;
-    border-radius: 10px 10px 0 0;
-    width: 300px;
-    transition: height 0.3s ease;
-    overflow-y: auto; /* Agregamos esta regla para activar el scroll cuando sea necesario */
+    background-color: #d3d0d0;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    z-index: 9999;
+    overflow: hidden; /* Asegúrate de que el contenido no se desborde */
 }
 
 .chatbot-container.minimized {

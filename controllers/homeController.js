@@ -1,21 +1,29 @@
 import { getProductos, profileEnsamblados } from "../models/homeModel.js"
 import { registroUser } from "../models/registroModel.js";
 import { productos } from "./productosController.js";
+import jwt from 'jsonwebtoken';
+import {config} from 'dotenv';
+config();
 
 const home = async (req, res ) => {
     try {
         const productos = await getProductos();
         const {_token} = req.cookies;
 
+        let tokenId;
         let autenticado;
         if(_token){
             autenticado=true;
+            const token = jwt.verify(_token, process.env.JWT_SECRET);
+            tokenId = token.id;
         } else {
             autenticado=false
         }
+
         res.render('index', {
             productos: productos,
-            autenticado: autenticado
+            autenticado: autenticado,
+            token: tokenId
         })
     } catch (error) {
         console.log(error);
@@ -39,9 +47,24 @@ const perfilEnsamblado = async (req,res) => {
     try {
         const {id}=req.params
         const ensamblados = await profileEnsamblados(id);
+
+        const {_token} = req.cookies;
+
+        let tokenId;
+        let autenticado;
+        if(_token){
+            autenticado=true;
+            const token = jwt.verify(_token, process.env.JWT_SECRET);
+            tokenId = token.id;
+        } else {
+            autenticado=false
+        }
+        console.log(tokenId);
         
         res.render('product-details', {
-            componente: ensamblados[0]
+            componente: ensamblados[0],
+            autenticado: autenticado,
+            token: tokenId
 
         })
     } catch (error) {
@@ -54,7 +77,21 @@ const perfilEnsamblado = async (req,res) => {
 
 const favoritos = async (req, res) => {
     try {
-        res.render('favorites')
+        const {_token} = req.cookies;
+
+        let tokenId;
+        let autenticado;
+        if(_token){
+            autenticado=true;
+            const token = jwt.verify(_token, process.env.JWT_SECRET);
+            tokenId = token.id;
+        } else {
+            autenticado=false
+        }
+        res.render('favorites', {
+            autenticado: autenticado,
+            token: tokenId
+        })
     } catch (error) {
         return res.status(500).json({
             error: "Error en el servidor"

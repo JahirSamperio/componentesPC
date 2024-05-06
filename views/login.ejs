@@ -7,6 +7,7 @@
     <title>PCBlend - Inicio de sesión</title>
     <link rel="stylesheet" href="../styles/main.css">
     <link rel="stylesheet" href="../styles/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 </head>
 
 <body>
@@ -22,10 +23,20 @@
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
             </ul>
-            <div class="user-menu">
-                <a href="http://localhost:8080/login">Iniciar sesión</a>
-                <a href="http://localhost:8080/registrar/render">Registrarse</a>
-            </div>
+            <% if (autenticado) { %>
+                <div class="user-menu">
+                    <form action="http://localhost:8080/login/logout" method="post">
+                        <button type="submit">Cerrar sesión</button>
+                    </form>
+                </div>
+            <% } else { %>
+                <!-- Si el usuario NO está autenticado, mostramos el contenido de este bloque -->
+                <div class="user-menu">
+                    <!-- Contenido del menú para usuarios NO autenticados -->
+                    <a href="http://localhost:8080/login">Iniciar sesión</a>
+                    <a href="http://localhost:8080/registrar/render">Registrarse</a>
+                </div>
+            <% } %>
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>

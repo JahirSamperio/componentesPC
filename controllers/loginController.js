@@ -1,6 +1,10 @@
 import { check, validationResult } from 'express-validator';
 import { generarJWT, generateId } from "../helpers/tokens.js";
 import { verificarContraseña, verificarUsuario } from '../models/loginModel.js';
+import jwt from 'jsonwebtoken';
+import {config} from 'dotenv';
+config();
+
 
 //Autenticacion del usuario
 const autenticar = async (req = request, res = response) => {

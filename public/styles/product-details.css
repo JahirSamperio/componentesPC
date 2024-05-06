@@ -3,6 +3,7 @@
     justify-content: space-between;
     align-items: flex-start;
     margin-top: 30px;
+    font-family: 'Roboto', sans-serif; /* Nueva tipografía */
 }
 
 .product-image {
@@ -12,7 +13,7 @@
 }
 
 .product-image img {
-    max-width: 100%;
+    width: 100%; /* Asegura que la imagen sea responsive */
     height: auto;
 }
 
@@ -22,18 +23,23 @@
 }
 
 .product-info h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
+    font-size: 28px; /* Tamaño más grande para el título */
+    font-weight: 500; /* Peso de la fuente */
+    color: #000000; /* Color más oscuro para mejor lectura */
+    margin-bottom: 15px;
 }
 
 .product-price {
-    font-size: 20px;
-    color: #ff5500;
+    font-size: 22px;
+    color: #ff5500 ; /* Un rojo más suave */
+    font-weight: bold; /* Fuente en negrita */
     margin-bottom: 20px;
 }
 
 .product-description {
-    margin-bottom: 20px;
+    font-size: 16px; /* Tamaño estándar para descripción */
+    margin-bottom: 25px;
+    color: #000000; /* Color gris oscuro para la descripción */
 }
 
 .product-specifications {
@@ -41,15 +47,25 @@
 }
 
 .product-specifications h3 {
-    font-size: 18px;
+    font-size: 20px;
     margin-bottom: 10px;
 }
 
 .product-specifications ul {
-    list-style: disc;
-    margin-left: 20px;
+    list-style-type: circle; /* Estilo de lista circular */
+    padding-left: 30px; /* Aumentar el padding para alinear texto */
 }
 
 .product-actions .btn {
-    margin-right: 10px;
+    padding: 10px 20px; /* Más padding para botones */
+    font-size: 16px; /* Tamaño de fuente para botones */
+    background-color: #ff5500; /* Color de fondo para botones */
+    color: white; /* Texto en blanco para mejor contraste */
+    border: none; /* Sin bordes */
+    cursor: pointer;
+    transition: background-color 0.3s; /* Transición suave al cambiar de color */
+}
+
+.product-actions .btn:hover {
+    background-color: #ff5500; /* Cambio de color al pasar el mouse */
 }
