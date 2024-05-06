@@ -78,18 +78,43 @@
 .card {
     display: flex;
     background-color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     padding: 20px;
     text-align: justify;
-    margin-bottom: 2rem;    
+    margin-bottom: 2rem;
+    min-height: 300px; /* Ajusta este valor según el tamaño deseado */
+    gap: 20px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 100px;
+}
+
+.card-content h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    font-size: 14px;
+    margin-bottom: 20px;
 }
 
 .half-left {
     flex: 1;
     display: grid;
-    align-items: center;
+    align-items: center;/* Ajusta este valor según el tamaño deseado */
 }
+
+.half-left img {
+    width: 100%;
+    height: auto;
+    max-height: 400px; /* Ajusta este valor según el tamaño deseado */
+    object-fit: contain;
+}
+
 .half-right {
     flex: 2
 }
