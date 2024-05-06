@@ -2,6 +2,7 @@ import { getProductos, profileEnsamblados } from "../models/homeModel.js"
 import { registroUser } from "../models/registroModel.js";
 import { productos } from "./productosController.js";
 import { agregar, favorites } from "../models/favoritosModel.js";
+import { cart } from "../models/cartModel.js";
 import jwt from 'jsonwebtoken';
 import {config} from 'dotenv';
 config();
@@ -142,26 +143,33 @@ const login = async (req, res) => {
             token: tokenId
         })
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             error: "Error en el servidor"
         })
     }
 }
 
-const cart = async(req, res) => {
+const shopping_cart = async(req, res) => {
     try {
         const {_token} = req.cookies;
 
+        let carrito;
         let tokenId;
         let autenticado;
         if(_token){
             autenticado=true;
             const token = jwt.verify(_token, process.env.JWT_SECRET);
             tokenId = token.id;
+            carrito = await cart(tokenId)
         } else {
             autenticado=false
         }
+
+
+
         res.render('cart', {
+            carrito: carrito,
             autenticado: autenticado,
             token: tokenId
         })
@@ -178,5 +186,5 @@ export {
     registro, 
     favoritos,
     login,
-    cart
+    shopping_cart
 }

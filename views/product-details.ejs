@@ -66,10 +66,13 @@
                     </ul>
                 </div>
                 <div class="product-actions">
-                    <button class="btn" id="add-to-cart">Agregar al carrito</button>
-                    <!-- Eliminamos el formulario y agregamos un botón con un identificador único -->
-                    <button type="button" class="btn" id="add-to-favorites">Agregar a favoritos</button>
-
+                    <form style="margin-top: 5%;"action="http://localhost:8080/cart/<%= token %>/<%= componente.id %>" method="post">
+                        <button class="btn" id="add-to-cart">Agregar al carrito</button>
+                    </form>
+                    <form style="margin-top: 5%;"action="http://localhost:8080/favoritos/<%= token %>/<%= componente.id %>" method="post">
+                        <!-- Eliminamos el formulario y agregamos un botón con un identificador único -->
+                        <button type="button" class="btn" id="add-to-favorites">Agregar a favoritos</button>
+                    </form>
                 </div>
             </div>
         </div>
