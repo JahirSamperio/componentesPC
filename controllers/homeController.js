@@ -36,7 +36,25 @@ const home = async (req, res ) => {
 
 const registro = async (req, res) => {
     try {
-        res.render('register');
+        const {id}=req.params
+        const ensamblados = await profileEnsamblados(id);
+
+        const {_token} = req.cookies;
+
+        let tokenId;
+        let autenticado;
+        if(_token){
+            autenticado=true;
+            const token = jwt.verify(_token, process.env.JWT_SECRET);
+            tokenId = token.id;
+        } else {
+            autenticado=false
+        }
+        console.log(tokenId);
+        res.render('register',  {
+            autenticado: autenticado,
+            token: tokenId 
+        });
     } catch (error) {
         return res.status(500).json({
             error: "Error en el servidor"
