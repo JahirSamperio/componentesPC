@@ -59,16 +59,17 @@
                     <h3>Especificaciones:</h3>
                     <ul>
                         <% componente.especificaciones.forEach(function(spec) { %>
-                            <li><%= spec %></li>
-                        <% }); %>
+                            <li>
+                                <%= spec %>
+                            </li>
+                            <% }); %>
                     </ul>
                 </div>
                 <div class="product-actions">
                     <button class="btn" id="add-to-cart">Agregar al carrito</button>
-                    <form style="margin-top: 5%;"
-                        action="http://localhost:8080/favoritos/<%= token %>/<%= componente.id %>" method="post">
-                        <button type="submit" class="btn" id="add-to-favorites">Agregar a favoritos</button>
-                    </form>
+                    <!-- Eliminamos el formulario y agregamos un botón con un identificador único -->
+                    <button type="button" class="btn" id="add-to-favorites">Agregar a favoritos</button>
+
                 </div>
             </div>
         </div>
@@ -111,7 +112,39 @@
         </div>
     </footer>
 
-    <script src="../scripts/product-details.js"></script>
+    <script>
+        // JavaScript para mostrar un toast
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    setTimeout(() => document.body.removeChild(toast), 300);
+                }, 3000);
+            }, 100);
+        }
+    
+        // Llamada a la función desde tu código existente
+        document.getElementById('add-to-favorites').addEventListener('click', async function () {
+            try {
+                const response = await fetch('http://localhost:8080/favoritos/<%= token %>/<%= componente.id %>', {
+                    method: 'POST'
+                });
+                if (response.ok) {
+                    showToast('Agregado exitosamente a favoritos');
+                } else {
+                    console.error('Error al agregar a favoritos');
+                }
+            } catch (error) {
+                console.error('Error de red:', error);
+            }
+        });
+    </script>
+    
 </body>
 
 </html>
