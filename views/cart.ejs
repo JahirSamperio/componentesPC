@@ -23,13 +23,23 @@
                 <li><a href="favorites.html">Favoritos</a></li>
                 <li><a href="cart.html" class="active"><i class="fas fa-shopping-cart"></i> Carrito</a></li>
             </ul>
-            <div class="user-menu">
-                <a href="http://localhost:8080/login">Iniciar sesión</a>
-                <a href="http://localhost:8080/registrar/render">Registrarse</a>
-            </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <% if (autenticado) { %>
+                <div class="user-menu">
+                    <form action="http://localhost:8080/login/logout" method="post">
+                        <button type="submit">Cerrar sesión</button>
+                    </form>
+                </div>
+                <% } else { %>
+                    <!-- Si el usuario NO está autenticado, mostramos el contenido de este bloque -->
+                    <div class="user-menu">
+                        <!-- Contenido del menú para usuarios NO autenticados -->
+                        <a href="http://localhost:8080/login">Iniciar sesión</a>
+                        <a href="http://localhost:8080/registrar/render">Registrarse</a>
+                    </div>
+                    <% } %>
+                        <div class="menu-toggle">
+                            <i class="fas fa-bars"></i>
+                        </div>
         </nav>
     </header>
 

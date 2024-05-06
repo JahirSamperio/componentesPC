@@ -26,13 +26,23 @@
                     <a href="cart.html"><i class="fas fa-shopping-cart"></i> Carrito</a>
                 </li>
             </ul>
-            <div class="user-menu">
-                <a href="http://localhost:8080/login">Iniciar sesión</a>
-                <a href="http://localhost:8080/registrar/render">Registrarse</a>
-            </div>
-            <div class="menu-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
+            <% if (autenticado) { %>
+                <div class="user-menu">
+                    <form action="http://localhost:8080/login/logout" method="post">
+                        <button type="submit">Cerrar sesión</button>
+                    </form>
+                </div>
+                <% } else { %>
+                    <!-- Si el usuario NO está autenticado, mostramos el contenido de este bloque -->
+                    <div class="user-menu">
+                        <!-- Contenido del menú para usuarios NO autenticados -->
+                        <a href="http://localhost:8080/login">Iniciar sesión</a>
+                        <a href="http://localhost:8080/registrar/render">Registrarse</a>
+                    </div>
+                    <% } %>
+                        <div class="menu-toggle">
+                            <i class="fas fa-bars"></i>
+                        </div>
         </nav>
     </header>
 
@@ -40,8 +50,10 @@
         <div class="component-selection">
             <ul id="productCategories" class="category-list">
                 <% categories.forEach(function(category) { %>
-                    <li><%= category %></li>
-                <% }); %>
+                    <li>
+                        <%= category %>
+                    </li>
+                    <% }); %>
             </ul>
         </div>
         <div class="customization-summary">
@@ -95,7 +107,11 @@
             <input type="text" id="user-input" placeholder="Escribe tu pregunta...">
             <button onclick="enviarPregunta()">Enviar</button>
             <button id="limpiar-btn" onclick="limpiarConversacion()">Clean</button>
+            <button id="minimizar-btn" onclick="minimizarChatbot()"><i class="fas fa-minus"></i></button>
+
         </div>
+    </div>
+
     </div>
 
 
@@ -159,54 +175,30 @@
             const chatDisplay = document.getElementById("chat-display");
             chatDisplay.innerHTML = "";
         }
-    </script>
 
-    <script>
-        // Variables para almacenar los componentes agregados y el precio total
-        let cartItems = [];
-        let totalPrice = 0;
+        let chatbotMinimizado = false;
 
-        function agregarAlCarrito(componente, precio) {
-            // Agregar el componente al carrito
-            cartItems.push({ nombre: componente, precio: precio });
+        function minimizarChatbot() {
+            const chatbotContainer = document.querySelector('.chatbot-container');
+            const minimizarBtnIcon = document.querySelector('#minimizar-btn i');
 
-            // Actualizar el precio total
-            totalPrice += precio;
-
-            // Actualizar la vista del mini carrito
-            actualizarCarrito();
+            if (chatbotContainer.classList.contains('minimized')) {
+                // Si el chatbot está minimizado, restaurarlo y cambiar ícono a '-'
+                chatbotContainer.classList.remove('minimized');
+                minimizarBtnIcon.classList.remove('fa-plus');
+                minimizarBtnIcon.classList.add('fa-minus');
+            } else {
+                // Si el chatbot no está minimizado, minimizarlo y cambiar ícono a '+'
+                chatbotContainer.classList.add('minimized');
+                minimizarBtnIcon.classList.remove('fa-minus');
+                minimizarBtnIcon.classList.add('fa-plus');
+            }
+            chatbotMinimizado = !chatbotMinimizado; // Toggle the state
         }
 
-        function actualizarCarrito() {
-            const cartItemsList = document.getElementById('cartItems');
-            const totalPriceElement = document.getElementById('totalPrice');
-
-            // Limpiar la lista de componentes
-            cartItemsList.innerHTML = '';
-
-            // Agregar los componentes al HTML
-            cartItems.forEach(item => {
-                const li = document.createElement('li');
-                li.textContent = `${item.nombre} - $${item.precio}`;
-                cartItemsList.appendChild(li);
-            });
-
-            // Actualizar el precio total
-            totalPriceElement.textContent = totalPrice;
-        }
-
-        // Función para agregar un componente al hacer clic en el botón "Agregar"
-        const agregarBotones = document.querySelectorAll('.continue-button');
-        agregarBotones.forEach(boton => {
-            boton.addEventListener('click', () => {
-                const componenteNombre = boton.closest('.half-right').querySelector('h2').textContent.trim();
-                const componentePrecio = parseFloat(boton.closest('.half-right').querySelector('strong').textContent.replace('Precio: ', '').trim());
-                agregarAlCarrito(componenteNombre, componentePrecio);
-            });
-        });
     </script>
     <script>
-        document.getElementById('productCategories').addEventListener('click', function(e) {
+        document.getElementById('productCategories').addEventListener('click', function (e) {
             if (e.target.tagName === 'LI') {
                 fetchProducts(e.target.textContent);
             }

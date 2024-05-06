@@ -1,5 +1,9 @@
 import {check, validationResult} from 'express-validator'
 import {registroUser} from '../models/registroModel.js'
+import jwt from 'jsonwebtoken';
+import {config} from 'dotenv';
+config();
+
 
 const registrarUsuario = async (req, res) => {
     try {
@@ -15,8 +19,6 @@ const registrarUsuario = async (req, res) => {
                 errores: errores.array()
             })
         }
-
-        // const {nombre, email, password} = req.body;
 
         const signup = await registroUser(req.body)
         return res.status(200).json({
