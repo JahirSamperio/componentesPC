@@ -4,7 +4,7 @@ import { home, perfilEnsamblado, registro } from '../controllers/homeController.
 const router = Router();
 
 router.get('/', home);
-router.get('/:id', perfilEnsamblado)
+router.get('/perfil/:id', perfilEnsamblado)
 router.get('/registro', registro);
 
 
