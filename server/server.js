@@ -3,6 +3,7 @@ import { dbConnection } from '../db/conexion.js';
 import cors from 'cors';
 import routes from '../routes/routes.js'
 import fileUpload from 'express-fileupload'; 
+import cookieParser from 'cookie-parser';
 
 class Server {
     constructor() {
@@ -41,7 +42,7 @@ class Server {
         this.app.use(express.urlencoded({ extended: true }));
 
         //Habilitar cookie parser
-        // this.app.use(cookieParser());
+        this.app.use(cookieParser());
 
         //Habilitar CSRF
         // this.app.use(csrf({cookie: true}));
