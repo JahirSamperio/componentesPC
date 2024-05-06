@@ -1,4 +1,4 @@
-import { conexion } from "../db/conexion";
+import { conexion } from "../db/conexion.js";
 
 
 //Selecciona informacion del inmueble
@@ -15,14 +15,14 @@ function agregar(usuario_id, ensamblado_id) {
     })
 }
 
-function favorites(usuario_id){
+function cart(usuario_id){
     return new Promise((resolve, reject) => {
         conexion.query(
-            `SELECT favoritos.*, ensamblados.*, usuarios.nombre as nombre_usuario, favoritos.id as id_favorito
-            FROM favoritos
-            JOIN ensamblados ON favoritos.ensamblado_id = ensamblados.id
-            JOIN usuarios ON favoritos.usuario_id = usuarios.id
-            WHERE favoritos.usuario_id = '${usuario_id}';`,
+            `SELECT cart.*, ensamblados.*, usuarios.nombre as nombre_usuario, cart.id as id_cart
+            FROM cart
+            JOIN ensamblados ON cart.ensamblado_id = ensamblados.id
+            JOIN usuarios ON cart.usuario_id = usuarios.id
+            WHERE cart.usuario_id = '${usuario_id}';`,
             function (error, result, field) {
                 if (error) 
                     return reject(error);
@@ -34,8 +34,8 @@ function favorites(usuario_id){
 function eliminar(id){
     return new Promise((resolve, reject) => {
         conexion.query(
-            `DELETE FROM favoritos
-            WHERE favoritos.id = '${id}';`,
+            `DELETE FROM cart
+            WHERE cart.id = '${id}';`,
             function (error, result, field) {
                 if (error) 
                     return reject(error);
@@ -46,6 +46,6 @@ function eliminar(id){
 
 export {
     agregar,
-    favorites,
+    cart,
     eliminar
 }
